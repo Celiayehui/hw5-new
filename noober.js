@@ -69,5 +69,74 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
+
+
+
+  let allRidesButton = document.querySelector('#all-filter')
+  allRidesButton.addEventListener('click', async function(event){
+    event.preventDefault()
+    console.log('All Rides button was clicked!')
+    // for (let i=0)
+
+  // allRidesButton.insertAdjacentHTML('beforeend',`<h1> All Rides Selected</h1>`)
+  
+  // async function pageloaded(){
+    let response = await fetch( `https://kiei451.com/api/rides.json`)
+    let json = await response.json()
+    console.log(json)
+
+     
+    let ridesArray = json
+
+    document.querySelector('.rides').insertAdjacentHTML('beforeend',`
+    ${renderRides (ridesArray)}
+  `)
+  // for (let i=0; i<ridesArray.length;i++){
+  //   renderRides(ridesArray[i])
+  // }
+    
+  // renderRides(ridesArray)
+
+  // allRidesButton.insertAdjacentElement('beforeend', `
+  // renderrides()
+  // `)
+  
+  // renderRides(ridesArray)
 })
+
+  let nooberPurpleButton = document.querySelector('#noober-purple-filter')
+  nooberPurpleButton.addEventListener('click', async function(event){
+    event.preventDefault()
+    console.log('Purple requested!')
+
+  // let levelOfService = 'Noober Purple'{}
+    let response = await fetch( `https://kiei451.com/api/rides.json`)
+    let json = await response.json()
+    console.log(json)
+
+     let purpleArray
+     for (let j=0; j<json.lenth; j++){
+       let b=levelOfService(json[j])
+       if (b=="Noober Purple"){
+         purpleArray.push(json[j])
+       }
+     }
+
+     let ridesArray1=purpleArray
+    // let ridesArray1 = json
+    // if (levelOfService(ridesArray1) == 'Noober Purple'){
+
+    // ridesArray1.push(ride)}
+
+    document.querySelector('.rides').insertAdjacentHTML('beforeend',`
+      ${renderRides (ridesArray1)}
+    `)
+    
+  })
+
+
+  })
+
+console.log(renderRides)
+
 
